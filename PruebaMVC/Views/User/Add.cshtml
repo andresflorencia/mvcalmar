@@ -1,0 +1,33 @@
+﻿@model PruebaMVC.Models.ViewModel.UserViewModel
+@{
+    ViewBag.Title = "Agregar usuario";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Add", "User", FormMethod.Post, new { rolw = "form", @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.usuario)
+            @Html.TextBoxFor(d => d.usuario, new { @class = "form-control form-control-sm" })
+
+            @Html.LabelFor(d => d.clave)
+            @Html.PasswordFor(d => d.clave, new { @class = "form-control form-control-sm" })
+
+            @Html.LabelFor(d => d.confirmaclave)
+            @Html.PasswordFor(d => d.confirmaclave, new { @class = "form-control form-control-sm" })
+
+            @Html.LabelFor(d => d.edad)
+            @Html.TextBoxFor(d => d.edad, new { @class = "form-control form-control-sm" })
+            
+            <div>
+                <input type="submit" value="Guardar" class="btn btn-block btn-success"/>
+            </div>
+        }
+    </div>
+</div>
